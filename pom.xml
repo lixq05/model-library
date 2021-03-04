@@ -7,6 +7,7 @@
 		<module>eureka</module>
 		<module>system</module>
 		<module>gateway</module>
+		<module>server</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -42,6 +43,12 @@
 				<version>${spring-cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.model</groupId>
+				<artifactId>server</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

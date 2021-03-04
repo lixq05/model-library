@@ -1,6 +1,6 @@
-package com.model.system.mapper;
+package com.model.server.mapper;
 
-import com.model.system.domain.Test;
+import com.model.server.domain.Test;
 
 import java.util.List;
 

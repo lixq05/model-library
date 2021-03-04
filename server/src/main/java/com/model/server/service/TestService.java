@@ -1,7 +1,7 @@
-package com.model.system.service;
+package com.model.server.service;
 
-import com.model.system.domain.Test;
-import com.model.system.mapper.TestMapper;
+import com.model.server.domain.Test;
+import com.model.server.mapper.TestMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
