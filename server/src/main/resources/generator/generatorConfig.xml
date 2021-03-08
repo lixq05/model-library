@@ -37,6 +37,7 @@
                              targetPackage="com.model.server.mapper"
                              type="XMLMAPPER" />
 
-        <table tableName="test" domainObjectName="Test"/>
+<!--        <table tableName="test" domainObjectName="Test"/>-->
+        <table tableName="category" domainObjectName="Category"/>
     </context>
 </generatorConfiguration>
