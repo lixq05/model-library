@@ -383,6 +383,76 @@ public class CategoryExample {
             addCriterion("leibie not between", value1, value2, "leibie");
             return (Criteria) this;
         }
+
+        public Criteria andModelIdIsNull() {
+            addCriterion("model_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelIdIsNotNull() {
+            addCriterion("model_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelIdEqualTo(String value) {
+            addCriterion("model_id =", value, "modelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelIdNotEqualTo(String value) {
+            addCriterion("model_id <>", value, "modelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelIdGreaterThan(String value) {
+            addCriterion("model_id >", value, "modelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelIdGreaterThanOrEqualTo(String value) {
+            addCriterion("model_id >=", value, "modelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelIdLessThan(String value) {
+            addCriterion("model_id <", value, "modelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelIdLessThanOrEqualTo(String value) {
+            addCriterion("model_id <=", value, "modelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelIdLike(String value) {
+            addCriterion("model_id like", value, "modelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelIdNotLike(String value) {
+            addCriterion("model_id not like", value, "modelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelIdIn(List<String> values) {
+            addCriterion("model_id in", values, "modelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelIdNotIn(List<String> values) {
+            addCriterion("model_id not in", values, "modelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelIdBetween(String value1, String value2) {
+            addCriterion("model_id between", value1, value2, "modelId");
+            return (Criteria) this;
+        }
+
+        public Criteria andModelIdNotBetween(String value1, String value2) {
+            addCriterion("model_id not between", value1, value2, "modelId");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

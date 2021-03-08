@@ -6,6 +6,7 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="dalei" jdbcType="VARCHAR" property="dalei" />
     <result column="leibie" jdbcType="VARCHAR" property="leibie" />
+    <result column="model_id" jdbcType="CHAR" property="modelId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, dalei, leibie
+    id, name, dalei, leibie, model_id
   </sql>
   <select id="selectByExample" parameterType="com.model.server.domain.CategoryExample" resultMap="BaseResultMap">
     select
@@ -100,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="com.model.server.domain.Category">
     insert into category (id, name, dalei, 
-      leibie)
+      leibie, model_id)
     values (#{id,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{dalei,jdbcType=VARCHAR}, 
-      #{leibie,jdbcType=VARCHAR})
+      #{leibie,jdbcType=VARCHAR}, #{modelId,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.model.server.domain.Category">
     insert into category
@@ -119,6 +120,9 @@
       <if test="leibie != null">
         leibie,
       </if>
+      <if test="modelId != null">
+        model_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -132,6 +136,9 @@
       </if>
       <if test="leibie != null">
         #{leibie,jdbcType=VARCHAR},
+      </if>
+      <if test="modelId != null">
+        #{modelId,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -156,6 +163,9 @@
       <if test="record.leibie != null">
         leibie = #{record.leibie,jdbcType=VARCHAR},
       </if>
+      <if test="record.modelId != null">
+        model_id = #{record.modelId,jdbcType=CHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,7 +176,8 @@
     set id = #{record.id,jdbcType=CHAR},
       name = #{record.name,jdbcType=VARCHAR},
       dalei = #{record.dalei,jdbcType=VARCHAR},
-      leibie = #{record.leibie,jdbcType=VARCHAR}
+      leibie = #{record.leibie,jdbcType=VARCHAR},
+      model_id = #{record.modelId,jdbcType=CHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -183,6 +194,9 @@
       <if test="leibie != null">
         leibie = #{leibie,jdbcType=VARCHAR},
       </if>
+      <if test="modelId != null">
+        model_id = #{modelId,jdbcType=CHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=CHAR}
   </update>
@@ -190,7 +204,8 @@
     update category
     set name = #{name,jdbcType=VARCHAR},
       dalei = #{dalei,jdbcType=VARCHAR},
-      leibie = #{leibie,jdbcType=VARCHAR}
+      leibie = #{leibie,jdbcType=VARCHAR},
+      model_id = #{modelId,jdbcType=CHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
 </mapper>

@@ -9,6 +9,8 @@ public class CategoryDto {
 
     private String leibie;
 
+    private String modelId;
+
     public String getId() {
         return id;
     }
@@ -41,6 +43,14 @@ public class CategoryDto {
         this.leibie = leibie;
     }
 
+    public String getModelId() {
+        return modelId;
+    }
+
+    public void setModelId(String modelId) {
+        this.modelId = modelId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -51,6 +61,7 @@ public class CategoryDto {
         sb.append(", name=").append(name);
         sb.append(", dalei=").append(dalei);
         sb.append(", leibie=").append(leibie);
+        sb.append(", modelId=").append(modelId);
         sb.append("]");
         return sb.toString();
     }
