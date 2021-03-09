@@ -11,3 +11,17 @@ create table `category` (
 
 insert into `category` (id, name, dalei, leibie, model_id) values ('00000000', '歼-16战机', '飞行器', '战斗机', '11111111');
 insert into `category` (id, name, dalei, leibie, model_id) values ('00000001', 'FC-1"枭龙"/JF-17"雷电"多用途攻击机', '飞行器', '战斗机','11111111');
+insert into `category` (id, name, dalei, leibie, model_id) values ('00000002', '苏-27战斗机', '飞行器', '战斗机','11111111');
+insert into `category` (id, name, dalei, leibie, model_id) values ('00000003', 'LCA战斗机', '飞行器', '战斗机','11111111');
+insert into `category` (id, name, dalei, leibie, model_id) values ('00000004', '苏-30/苏-33“侧卫” 制空战斗机和对地攻击机', '飞行器', '战斗机','11111111');
+insert into `category` (id, name, dalei, leibie, model_id) values ('00000005', 'F-16“战隼', '飞行器', '战斗机','11111111');
+insert into `category` (id, name, dalei, leibie, model_id) values ('00000006', '麦克唐纳F-15E“打击鹰” 双座双发打击战斗机', '飞行器', '战斗机','11111111');
+insert into `category` (id, name, dalei, leibie, model_id) values ('00000007', '歼-31战斗机', '飞行器', '战斗机','11111111');
+insert into `category` (id, name, dalei, leibie, model_id) values ('00000008', 'F-15鹰式战斗机', '飞行器', '战斗机','11111111');
+insert into `category` (id, name, dalei, leibie, model_id) values ('00000009', '歼-20战斗机', '飞行器', '战斗机','11111111');
+insert into `category` (id, name, dalei, leibie, model_id) values ('00000010', 'F-35“闪电II', '飞行器', '战斗机','11111111');
+insert into `category` (id, name, dalei, leibie, model_id) values ('00000011', '歼-11战斗机', '飞行器', '战斗机','11111111');
+insert into `category` (id, name, dalei, leibie, model_id) values ('00000012', 'P-59“空中彗星”战斗机', '飞行器', '战斗机','11111111');
+insert into `category` (id, name, dalei, leibie, model_id) values ('00000013', 'P-39“空中眼镜蛇', '飞行器', '战斗机','11111111');
+insert into `category` (id, name, dalei, leibie, model_id) values ('00000014', '波音PW-9单座单发双翼战斗机', '飞行器', '战斗机','11111111');
+insert into `category` (id, name, dalei, leibie, model_id) values ('00000015', '贝尔P-63“眼镜蛇王”单翼战斗机', '飞行器', '战斗机','11111111');
