@@ -14,7 +14,8 @@ module.exports = {
         'vue/no-unused-vars': 'off',
         'vue/require-v-for-key': 'off',
         'no-unused-vars': 'off',
-        'vue/no-unused-components': 'off'
+        'vue/no-unused-components': 'off',
+        'no-unused-vars': 'off'
     },
     parserOptions: {
         parser: 'babel-eslint'

@@ -10,6 +10,8 @@ import com.model.server.dto.CategoryDto;
 import com.model.server.dto.PageDto;
 import com.model.server.mapper.CategoryMapper;
 import com.model.server.mapper.TestMapper;
+import com.model.server.util.CopyUtil;
+import com.model.server.util.UuidUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -21,19 +23,29 @@ import java.util.List;
 public class CategoryService {
     @Resource
     private CategoryMapper categoryMapper;
+
     public void list(PageDto pageDto){
         PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
         CategoryExample categoryExample = new CategoryExample();
         List<Category> categoryList = categoryMapper.selectByExample(categoryExample);
         PageInfo<Category> pageInfo = new PageInfo<>(categoryList);
         pageDto.setTotal(pageInfo.getTotal());
-        List<CategoryDto> categoryDtoList= new ArrayList<>();
-        for (int i = 0; i < categoryList.size(); i++) {
-            Category category = categoryList.get(i);
-            CategoryDto categoryDto = new CategoryDto();
-            BeanUtils.copyProperties(category,categoryDto);
-            categoryDtoList.add(categoryDto);
-        }
+//        List<CategoryDto> categoryDtoList= new ArrayList<>();
+//        for (int i = 0; i < categoryList.size(); i++) {
+//            Category category = categoryList.get(i);
+//            CategoryDto categoryDto = new CategoryDto();
+//            BeanUtils.copyProperties(category,categoryDto);
+//            categoryDtoList.add(categoryDto);
+//        }
+        List<CategoryDto> categoryDtoList = CopyUtil.copyList(categoryList, CategoryDto.class);
         pageDto.setList(categoryDtoList);
+    }
+
+    public void save(CategoryDto categoryDto) {
+        categoryDto.setId(UuidUtil.getShortUuid());
+//        Category category = new Category();
+//        BeanUtils.copyProperties(categoryDto, category);
+        Category category = CopyUtil.copy(categoryDto, Category.class);
+        categoryMapper.insert(category);
     }
 }
