@@ -107,11 +107,13 @@
         $("#form-modal").modal("show");
       },
       list(page) {
+        Loading.show();
         let _this = this;
         _this.$ajax.post('http://127.0.0.1:9000/business/admin/category/list', {
           page: page,
           size: _this.$refs.pagination.size
         }).then((response) => {
+          Loading.hide();
           let resp = response.data;
           _this.categorys = resp.content.list;
           _this.$refs.pagination.render(page, resp.content.total);
@@ -119,39 +121,38 @@
       },
       save() {
         let _this = this;
+        // 保存校验
+        if (!Validator.require(_this.category.name, "名称")
+          || !Validator.require(_this.category.modelId, "模型库ID")
+          || !Validator.length(_this.category.modelId, "模型库ID", 1, 8)) {
+          return;
+        }
+        Loading.show();
         _this.$ajax.post('http://127.0.0.1:9000/business/admin/category/save', _this.category).then((response) => {
+          Loading.hide();
           console.log("保存型号列表结果：", response);
           let resp = response.data;
           if (resp.success) {
             $("#form-modal").modal("hide");
             _this.list(1);
-            toast.success("保存成功！");
+            Toast.success("保存成功！");
           }
         })
       },
       del(id) {
         let _this = this;
-        Swal.fire({
-          title: '确认删除？',
-          text: "删除后不可恢复，确认删除？",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: '确认',
-          cancelButtonText: '取消'
-        }).then((result) => {
-          if (result.value) {
-            _this.$ajax.delete('http://127.0.0.1:9000/business/admin/category/delete/' + id).then((response) => {
-              console.log("删除型号列表结果：", response);
-              let resp = response.data;
-              if (resp.success) {
-                _this.list(1);
-                toast.success("删除成功！");
-              }
-            })
-          }
-        })
+        Confirm.show("删除型号后不可恢复，确认删除？", function () {
+          Loading.show();
+          _this.$ajax.delete('http://127.0.0.1:9000/business/admin/category/delete/' + id).then((response)=>{
+            Loading.hide();
+            console.log("删除型号列表结果：", response);
+            let resp = response.data;
+            if (resp.success) {
+              _this.list(1);
+              Toast.success("删除成功！");
+            }
+          })
+        });
       }
     }
   }
