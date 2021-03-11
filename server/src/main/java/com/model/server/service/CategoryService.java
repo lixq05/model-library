@@ -14,6 +14,7 @@ import com.model.server.util.CopyUtil;
 import com.model.server.util.UuidUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -42,10 +43,21 @@ public class CategoryService {
     }
 
     public void save(CategoryDto categoryDto) {
-        categoryDto.setId(UuidUtil.getShortUuid());
-//        Category category = new Category();
-//        BeanUtils.copyProperties(categoryDto, category);
+//        categoryDto.setId(UuidUtil.getShortUuid());
         Category category = CopyUtil.copy(categoryDto, Category.class);
+        if (StringUtils.isEmpty(categoryDto.getId())) {
+            this.insert(category);
+        } else {
+            this.update(category);
+        }
+    }
+
+    private void insert(Category category) {
+        category.setId(UuidUtil.getShortUuid());
         categoryMapper.insert(category);
+    }
+
+    private void update(Category category) {
+        categoryMapper.updateByPrimaryKey(category);
     }
 }

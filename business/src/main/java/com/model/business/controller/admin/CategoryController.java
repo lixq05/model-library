@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/admin/category")
-public class CategoryController {
+public class CategoryController{
     private static final Logger LOG = LoggerFactory.getLogger(CategoryController.class);
     @Resource
     private CategoryService categoryService;
