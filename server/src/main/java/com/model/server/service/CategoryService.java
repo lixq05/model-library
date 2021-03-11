@@ -52,6 +52,11 @@ public class CategoryService {
         }
     }
 
+    public void delete(String id) {
+        categoryMapper.deleteByPrimaryKey(id);
+    }
+
+
     private void insert(Category category) {
         category.setId(UuidUtil.getShortUuid());
         categoryMapper.insert(category);
@@ -60,4 +65,5 @@ public class CategoryService {
     private void update(Category category) {
         categoryMapper.updateByPrimaryKey(category);
     }
+
 }

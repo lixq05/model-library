@@ -9,9 +9,7 @@ import com.model.server.service.CategoryService;
 import com.model.server.service.TestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -23,7 +21,7 @@ public class CategoryController{
     @Resource
     private CategoryService categoryService;
 
-    @RequestMapping("/list")
+    @PostMapping("/list")
     public ResponseDto list(@RequestBody PageDto pageDto) {
          LOG.info("pageDto: {}", pageDto);
          ResponseDto responseDto = new ResponseDto();
@@ -31,12 +29,20 @@ public class CategoryController{
          responseDto.setContent(pageDto);
          return responseDto;
     }
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public ResponseDto save(@RequestBody CategoryDto categoryDto) {
         LOG.info("categoryDto: {}", categoryDto);
         ResponseDto responseDto = new ResponseDto();
         categoryService.save(categoryDto);
         responseDto.setContent(categoryDto);
+        return responseDto;
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseDto save(@PathVariable String id) {
+        LOG.info("id: {}", id);
+        ResponseDto responseDto = new ResponseDto();
+        categoryService.delete(id);
         return responseDto;
     }
 }
