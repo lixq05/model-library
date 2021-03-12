@@ -96,16 +96,25 @@
       _this.list(1);
     },
     methods: {
+      /**
+       * 点击【新增】
+       */
       add() {
         let _this = this;
         _this.category = {};
         $("#form-modal").modal("show");
       },
+      /**
+       * 点击【编辑】
+       */
       edit(category) {
         let _this = this;
         _this.category = $.extend({}, category);
         $("#form-modal").modal("show");
       },
+      /**
+       * 列表查询
+       */
       list(page) {
         Loading.show();
         let _this = this;
@@ -119,6 +128,9 @@
           _this.$refs.pagination.render(page, resp.content.total);
         })
       },
+      /**
+       * 点击【保存】
+       */
       save() {
         let _this = this;
         // 保存校验
@@ -130,7 +142,6 @@
         Loading.show();
         _this.$ajax.post('http://127.0.0.1:9000/business/admin/category/save', _this.category).then((response) => {
           Loading.hide();
-          console.log("保存型号列表结果：", response);
           let resp = response.data;
           if (resp.success) {
             $("#form-modal").modal("hide");
@@ -141,13 +152,15 @@
           }
         })
       },
+      /**
+       * 点击【删除】
+       */
       del(id) {
         let _this = this;
         Confirm.show("删除型号后不可恢复，确认删除？", function () {
           Loading.show();
           _this.$ajax.delete('http://127.0.0.1:9000/business/admin/category/delete/' + id).then((response)=>{
             Loading.hide();
-            console.log("删除型号列表结果：", response);
             let resp = response.data;
             if (resp.success) {
               _this.list(1);

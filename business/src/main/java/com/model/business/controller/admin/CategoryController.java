@@ -19,9 +19,13 @@ import java.util.List;
 @RequestMapping("/admin/category")
 public class CategoryController{
     private static final Logger LOG = LoggerFactory.getLogger(CategoryController.class);
+    public static final String BUSINESS_NAME = "型号";
     @Resource
     private CategoryService categoryService;
 
+    /**
+     * 列表查询
+     */
     @PostMapping("/list")
     public ResponseDto list(@RequestBody PageDto pageDto) {
          LOG.info("pageDto: {}", pageDto);
@@ -30,6 +34,9 @@ public class CategoryController{
          responseDto.setContent(pageDto);
          return responseDto;
     }
+    /**
+     * 保存，id有值时更新，无值时新增
+     */
     @PostMapping("/save")
     public ResponseDto save(@RequestBody CategoryDto categoryDto) {
         LOG.info("categoryDto: {}", categoryDto);
@@ -42,7 +49,9 @@ public class CategoryController{
         responseDto.setContent(categoryDto);
         return responseDto;
     }
-
+    /**
+     * 删除
+     */
     @DeleteMapping("/delete/{id}")
     public ResponseDto save(@PathVariable String id) {
         LOG.info("id: {}", id);
