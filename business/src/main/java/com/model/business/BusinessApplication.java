@@ -9,6 +9,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 
+
 @SpringBootApplication
 @EnableEurekaClient
 @ComponentScan("com.model")
@@ -21,5 +22,6 @@ public class BusinessApplication {
 		Environment env = app.run(args).getEnvironment();
 		LOG.info("启动成功！！");
 		LOG.info("business地址: \thttp://127.0.0.1:{}", env.getProperty("server.port"));
+
 	}
 }

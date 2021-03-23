@@ -1,3 +1,4 @@
+-- 机动组件模型库
 -- 仿真模型型号
 drop table if exists `category`;
 create table `category` (
@@ -25,3 +26,23 @@ insert into `category` (id, name, dalei, leibie, model_id) values ('00000012', '
 insert into `category` (id, name, dalei, leibie, model_id) values ('00000013', 'P-39“空中眼镜蛇', '飞行器', '战斗机','11111111');
 insert into `category` (id, name, dalei, leibie, model_id) values ('00000014', '波音PW-9单座单发双翼战斗机', '飞行器', '战斗机','11111111');
 insert into `category` (id, name, dalei, leibie, model_id) values ('00000015', '贝尔P-63“眼镜蛇王”单翼战斗机', '飞行器', '战斗机','11111111');
+
+# 三自由度仿真模型--和用户绑定
+-- 组件模型
+drop table if exists `component`;
+create table `component` (
+  `id` char(8) not null default '' comment 'id',
+  `name` varchar(100) comment '文件名',
+  `url` varchar(100) comment '地址',
+  `size` int comment '大小|字节b',
+  `model_id` char(8) comment '模型库|model.id',
+  `category_id` char(8) comment '型号|category.id',
+  `created_at` datetime(3) comment '创建时间',
+  `updated_at` datetime(3) comment '修改时间',
+  primary key (`id`)
+) engine=innodb default charset=utf8mb4 comment='组件';
+insert into `component` (id, name, category_id) values ('00000000', '三自由度机动模型','00000000');
+insert into `component` (id, name, category_id) values ('00000001', '五自由度机动模型','00000000');
+insert into `component` (id, name, category_id) values ('00000002', '六自由度机动模型','00000000');
+-- 模型内容
+-- 模型内容文件
